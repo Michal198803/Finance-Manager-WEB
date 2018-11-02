@@ -1,56 +1,45 @@
-
-#login {
-    float: left;
-    background-color: white;
-    width: 100%;
-    padding: 40px;
-    -webkit-box-shadow: 3px 3px 30px 5px rgba(204, 204, 204, 0.9);
-    -moz-box-shadow: 3px 3px 30px 5px rgba(204, 204, 204, 0.9);
-    box-shadow: 3px 3px 30px 5px rgba(204, 204, 204, 0.9);
-    border-radius: 40px;
+* {
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    text-decoration: none;
+    outline: 0;
 }
 
 body {
     font-size: calc(8px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
-.error
-{
-   color:red;
-    margin-top: 10px;
-    margin-bottom: 10px;
+
+
+label[type=welcome] {
+    position: absolute;
+    TOP: 250px;
+    left: 320px;
+    Color: #efefef;
+    font-size: 45px;
+    font-family: 'Noto Serif KR', sans-serif;
 }
-input[type=firstName],
-input[type=loginName],
-input[type=emailAdress],
-input[type=text],
-input[type=password] {
-    width: 100%;
+
+
+input[type=date],
+
+select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
     background-color: #efefef;
     color: #666;
     border: 2px solid #ddd;
     border-radius: 5px;
-    font-size: 20px;
-    padding: 10px;
-    box-sizing: border-box;
+    font-size: 12px;
     outline: none;
-    margin-top: 10px;
-}
-
-input[type=firstName]:focus,
-input[type=loginName]:focus,
-input[type=emailAdress]:focus,
-input[type=text]:focus,
-input[type=password]:focus {
     -webkit-box-shadow: 0px 0px 10px 2px rgba(204, 204, 204, 0.9);
     -moz-box-shadow: 0px 0px 10px 2px rgba(204, 204, 204, 0.9);
     box-shadow: 0px 0px 10px 2px rgba(204, 204, 204, 0.9);
-    border: 2px solid #a5cda5;
-    background-color: #e9f3e9;
-    color: #428c42;
 }
 
 input[type=submit] {
-    width: 100%;
+    width: 200px;
     background-color: #0000FF;
     font-size: 20px;
     color: white;
@@ -68,4 +57,3 @@ input[type=submit]:focus {
     -moz-box-shadow: 0px 0px 15px 5px rgba(204, 204, 204, 0.9);
     box-shadow: 0px 0px 15px 5px rgba(204, 204, 204, 0.9);
 }
-
