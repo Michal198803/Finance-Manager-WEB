@@ -78,19 +78,16 @@ if (isset($_POST['email'])) {
 
                 if ($connect->query("INSERT INTO finance_manager.users VALUES (NULL, '$login', '$password_hash', '$email')")) {
 
-                    while ($row1 = mysqli_fetch_array($category_result))
-                    {
+                    while ($row1 = mysqli_fetch_array($category_result)) {
                         $category_to_insert = $row1['name'];
                         @$connect->query("INSERT INTO finance_manager.incomes_category_assigned_to_users(incomes_category_assigned_to_users.id,incomes_category_assigned_to_users.user_id,incomes_category_assigned_to_users.name) values (null,'$user_id','$category_to_insert')");
                     }
 
-                    while ($row1 = mysqli_fetch_array($payment_method_result))
-                    {
+                    while ($row1 = mysqli_fetch_array($payment_method_result)) {
                         $payment_method = $row1['name'];
                         @$connect->query("INSERT INTO finance_manager.payment_methods_assigned_to_users(payment_methods_assigned_to_users.id,payment_methods_assigned_to_users.user_id,payment_methods_assigned_to_users.name) values (null,'$user_id','$payment_method')");
                     }
-                    while ($row1 = mysqli_fetch_array( $expenses_list_result))
-                    {
+                    while ($row1 = mysqli_fetch_array($expenses_list_result)) {
                         $expenses_list = $row1['name'];
                         @$connect->query("INSERT INTO finance_manager.expenses_category_assigned_to_users(expenses_category_assigned_to_users.id,expenses_category_assigned_to_users.user_id,expenses_category_assigned_to_users.name) values (null,'$user_id','$expenses_list')");
                     }
