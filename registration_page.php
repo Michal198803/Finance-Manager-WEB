@@ -30,9 +30,7 @@ if (isset($_POST['email'])) {
 
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-    $_SESSION['fr_nick'] = $login;
-    $_SESSION['fr_email'] = $email;
-    $_SESSION['fr_haslo1'] = $password;
+
 
     require_once "connect.php";
     mysqli_report(MYSQLI_REPORT_STRICT);
@@ -50,8 +48,8 @@ if (isset($_POST['email'])) {
 
             $number_of_emails = $result_email->num_rows;
             if ($number_of_emails > 0) {
-                $result_ok = false;
-                $_SESSION['e_email'] = "There is exists email assigned to this email address!";
+                $validation_correct = false;
+                $_SESSION['error_email'] = "There is exists email assigned to this email address!";
             }
 
             $list_of_users = $connect->query("SELECT id FROM finance_manager.users ORDER BY id DESC LIMIT 1 ");
@@ -70,7 +68,7 @@ if (isset($_POST['email'])) {
             $number_of_the_same_nick_name = $result_email->num_rows;
             if ($number_of_the_same_nick_name > 0) {
                 $validation_correct = false;
-                $_SESSION['e_nick'] = "There is exists user with the same name.Please select another one !";
+                $_SESSION['error_login'] = "There is exists user with the same name. Please select another one!";
             }
 
             if ($validation_correct == true) {

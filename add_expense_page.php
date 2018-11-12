@@ -72,6 +72,7 @@ $result_payment_method = mysqli_query($connect, $payment_method);
                     Date:
                 </label>
                 <input type="date"  value="<?php echo date('Y-m-d'); ?>" name="date">
+
             </div>
             <div class="form-group">
                 <label>
@@ -101,7 +102,7 @@ $result_payment_method = mysqli_query($connect, $payment_method);
             </div>
             <div class="form-group">
                 <input type="submit" value="Add expense">
-                <input type="submit" value="Cancel">
+                <input type="reset" value="Cancel">
             </div>
         </form>
     </div>

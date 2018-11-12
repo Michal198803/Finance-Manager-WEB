@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="col-sm-12">
+    <div class="col-lg-12">
 
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -44,7 +44,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </div>
 
-    <div class="col-sm-12">
+    <div class="col-lg-12">
         <img src="img/finance.jpg" style="width:100%;">
     </div>
 </div>

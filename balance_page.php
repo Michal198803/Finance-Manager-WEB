@@ -223,7 +223,9 @@ switch ($period) {
             width: 100%">
 
         <div class="col-md-6 col-lg-6" style="float: left; width: 100%">
-            <label><?php
+            <label>
+                <?php
+                if(isset($_SESSION['incomes_count']))
                 echo "Your income is: " . $_SESSION['incomes_count'] . " PLN";
                 ?> </label>
         </div>
@@ -260,7 +262,9 @@ switch ($period) {
         </div class="row">
 
         <div class="col-md-6 col-lg-6">
-            <label><?php
+            <label>
+                <?php
+                if(isset($_SESSION['expenses_count']))
                 echo "Your income is: " . $_SESSION['expenses_count'] . " PLN";
                 ?></label>
         </div>
@@ -269,10 +273,11 @@ switch ($period) {
 
 <div class="col-md-6 col-lg-6">
     <?php
+    if(isset($_SESSION['incomes_count'])&&isset($_SESSION['expenses_count']))
     $_SESSION['balance'] = $_SESSION['incomes_count'] - $_SESSION['expenses_count'];
-    if ($_SESSION['balance'] > 0) {
+    if ((isset($_SESSION['balance'])&&($_SESSION['balance'] >= 0))) {
         echo '<label style="color:green">' . "Your balance is: " . $_SESSION['balance'] . " PLN" . " Your balance is positive! Keep it up !" . "</label>";
-    } else
+    } else if ((isset($_SESSION['balance'])&&($_SESSION['balance'] < 0)))
         echo '<label style="color:red">' . "Your balance is: " . $_SESSION['balance'] . " PLN" . " Your balance is negative! Organise better your budget !" . "</label>";
 
     $_SESSION['incomes_count'] = 0;

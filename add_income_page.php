@@ -94,7 +94,7 @@ $result = mysqli_query($connect, $category_query);
             </div>
             <div class="form-group">
                 <input type="submit" value="Add income">
-                <input type="submit" value="Cancel">
+                <input type="reset" value="Cancel">
             </div>
         </form>
     </div>
