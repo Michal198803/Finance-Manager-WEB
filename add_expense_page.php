@@ -3,6 +3,9 @@ session_start();
 require_once "connect.php";
 mysqli_report(MYSQLI_REPORT_STRICT);
 
+if (!isset($_SESSION['id']))
+    header('Location: login_page.php');
+
 $connect = new mysqli($host, $db_user, $db_password, $db_name);
 $user_id = $_SESSION['id'];
 $expenses_list = "SELECT * FROM expenses_category_assigned_to_users WHERE user_id = '$user_id' ";
@@ -65,13 +68,13 @@ $result_payment_method = mysqli_query($connect, $payment_method);
                 <label>
                     Amount:
                 </label>
-                <input type="number" step="0.01"  value="0" name="amount">
+                <input type="number" step="0.01" value="0" name="amount">
             </div>
             <div class="form-group">
                 <label>
                     Date:
                 </label>
-                <input type="date"  value="<?php echo date('Y-m-d'); ?>" name="date">
+                <input type="date" value="<?php echo date('Y-m-d'); ?>" name="date">
 
             </div>
             <div class="form-group">
@@ -80,7 +83,7 @@ $result_payment_method = mysqli_query($connect, $payment_method);
                 </label>
                 <select name="payment">
                     <?php while ($row1 = mysqli_fetch_array($result_payment_method)):; ?>
-                    <option tyme="number" value="<?php echo $row1['id']; ?>"><?php echo $row1['name']; ?></option>
+                        <option tyme="number" value="<?php echo $row1['id']; ?>"><?php echo $row1['name']; ?></option>
                     <?php endwhile; ?>
                 </select>
             </div>
@@ -92,7 +95,7 @@ $result_payment_method = mysqli_query($connect, $payment_method);
                     <?php while ($row1 = mysqli_fetch_array($result_expenses_list)):; ?>
                         <option type="number" value="<?php echo $row1['id']; ?>"><?php echo $row1['name']; ?></option>
                     <?php endwhile; ?>
-            </select>
+                </select>
             </div>
             <div class="form-group">
                 <label>

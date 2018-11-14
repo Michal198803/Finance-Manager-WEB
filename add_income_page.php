@@ -3,6 +3,9 @@ session_start();
 require_once "connect.php";
 mysqli_report(MYSQLI_REPORT_STRICT);
 
+if (!isset($_SESSION['id']))
+    header('Location: login_page.php');
+
 $connect = new mysqli($host, $db_user, $db_password, $db_name);
 $user_id = $_SESSION['id'];
 $category_query = "SELECT * FROM incomes_category_assigned_to_users WHERE user_id = '$user_id' ";
@@ -64,7 +67,7 @@ $result = mysqli_query($connect, $category_query);
                 <label>
                     Amount:
                 </label>
-                <input type="number" step="0.01"  value="0" name="amount">
+                <input type="number" step="0.01" value="0" name="amount">
             </div>
             <div class="form-group">
                 <label>

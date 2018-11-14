@@ -2,8 +2,8 @@
 
 session_start();
 
-if ((isset($_SESSION['online'])) && ($_SESSION['online']==true))
-{
+if ((isset($_SESSION['online'])) && ($_SESSION['online'] == true)) {
+
     header('Location: home_page.php');
     exit();
 }
@@ -42,7 +42,7 @@ if ((isset($_SESSION['online'])) && ($_SESSION['online']==true))
 
                 </form>
                 <?php
-                if(isset($_SESSION['error']))
+                if (isset($_SESSION['error']))
                     echo $_SESSION['error'];
                 ?>
             </div>

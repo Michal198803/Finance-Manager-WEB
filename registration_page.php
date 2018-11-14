@@ -31,7 +31,6 @@ if (isset($_POST['email'])) {
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 
-
     require_once "connect.php";
     mysqli_report(MYSQLI_REPORT_STRICT);
 

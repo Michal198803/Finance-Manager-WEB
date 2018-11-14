@@ -2,6 +2,9 @@
 session_start();
 require_once "connect.php";
 
+if (!isset($_SESSION['id']))
+    header('Location: login_page.php');
+
 $user_id = $_SESSION['id'];
 mysqli_report(MYSQLI_REPORT_STRICT);
 
@@ -180,7 +183,8 @@ switch ($period) {
                 }
                 ?>
 
-                <div class="col-xs-12 col-md-3 col-lg-3" style="float: right; padding-right: 3%">
+
+                <div class="col-xs-12 col-md-3 col-lg-3" style="float: right; padding-right: 4%">
 
                     <label>Please select period: </label>
                     <select name="period">
@@ -192,7 +196,7 @@ switch ($period) {
                     <input type="submit" class="btn btn-primary btn-xs" value="show balance">
             </form>
         </div>
-        <div class="col-md-6 col-lg-6" style="padding-top: 25px; float: left; width: 100%">
+        <div class="col-md-6 col-lg-6" style="padding-top: 25px; float: left; width: 100% ">
             <table class="table">
                 <tr>
                     <th>Amount</th>
@@ -222,11 +226,12 @@ switch ($period) {
         ;
             width: 100%">
 
+
         <div class="col-md-6 col-lg-6" style="float: left; width: 100%">
             <label>
                 <?php
-                if(isset($_SESSION['incomes_count']))
-                echo "Your income is: " . $_SESSION['incomes_count'] . " PLN";
+                if (isset($_SESSION['incomes_count']))
+                    echo "Your income is: " . $_SESSION['incomes_count'] . " PLN";
                 ?> </label>
         </div>
     </div>
@@ -264,8 +269,8 @@ switch ($period) {
         <div class="col-md-6 col-lg-6">
             <label>
                 <?php
-                if(isset($_SESSION['expenses_count']))
-                echo "Your income is: " . $_SESSION['expenses_count'] . " PLN";
+                if (isset($_SESSION['expenses_count']))
+                    echo "Your income is: " . $_SESSION['expenses_count'] . " PLN";
                 ?></label>
         </div>
     </div>
@@ -273,11 +278,11 @@ switch ($period) {
 
 <div class="col-md-6 col-lg-6">
     <?php
-    if(isset($_SESSION['incomes_count'])&&isset($_SESSION['expenses_count']))
-    $_SESSION['balance'] = $_SESSION['incomes_count'] - $_SESSION['expenses_count'];
-    if ((isset($_SESSION['balance'])&&($_SESSION['balance'] >= 0))) {
+    if (isset($_SESSION['incomes_count']) && isset($_SESSION['expenses_count']))
+        $_SESSION['balance'] = $_SESSION['incomes_count'] - $_SESSION['expenses_count'];
+    if ((isset($_SESSION['balance']) && ($_SESSION['balance'] >= 0))) {
         echo '<label style="color:green">' . "Your balance is: " . $_SESSION['balance'] . " PLN" . " Your balance is positive! Keep it up !" . "</label>";
-    } else if ((isset($_SESSION['balance'])&&($_SESSION['balance'] < 0)))
+    } else if ((isset($_SESSION['balance']) && ($_SESSION['balance'] < 0)))
         echo '<label style="color:red">' . "Your balance is: " . $_SESSION['balance'] . " PLN" . " Your balance is negative! Organise better your budget !" . "</label>";
 
     $_SESSION['incomes_count'] = 0;

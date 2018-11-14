@@ -1,3 +1,7 @@
+<?php
+if (!isset($_SESSION['id']))
+    header('Location: login_page.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
