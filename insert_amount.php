@@ -19,7 +19,7 @@ mysqli_report(MYSQLI_REPORT_STRICT);
 
 $connect = new mysqli($host, $db_user, $db_password, $db_name);
 
-$connect->query("INSERT INTO finance_manager.incomes VALUES (NULL,'$user_id', '$category', '$amount', '$date','$comment')");
+$connect->query("INSERT INTO incomes VALUES (NULL,'$user_id', '$category', '$amount', '$date','$comment')");
 
 
 

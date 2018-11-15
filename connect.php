@@ -3,7 +3,7 @@
 
 $db_user = "root";
 $db_password = "";
-$db_name = "finance_manager";
+$db_name = "mich1988_finm";
 
 $host = "localhost";
 

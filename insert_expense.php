@@ -14,7 +14,7 @@ mysqli_report(MYSQLI_REPORT_STRICT);
 
 $connect = new mysqli($host, $db_user, $db_password, $db_name);
 
-$connect->query("INSERT INTO finance_manager.expenses VALUES (NULL,'$user_id', '$category','$payment','$amount', '$date','$comment')");
+$connect->query("INSERT INTO expenses VALUES (NULL,'$user_id', '$category','$payment','$amount', '$date','$comment')");
 
 
 

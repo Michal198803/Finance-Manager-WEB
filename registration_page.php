@@ -41,7 +41,7 @@ if (isset($_POST['email'])) {
             throw new Exception(mysqli_connect_errno());
         } else {
 
-            $result_email = $connect->query("SELECT id FROM finance_manager.users WHERE email='$email'");
+            $result_email = $connect->query("SELECT id FROM users WHERE email='$email'");
 
             if (!$result_email) throw new Exception($connect->error);
 
@@ -51,16 +51,16 @@ if (isset($_POST['email'])) {
                 $_SESSION['error_email'] = "There is exists email assigned to this email address!";
             }
 
-            $list_of_users = $connect->query("SELECT id FROM finance_manager.users ORDER BY id DESC LIMIT 1 ");
+            $list_of_users = $connect->query("SELECT id FROM mich1988_finm.users ORDER BY id DESC LIMIT 1 ");
 
             $user_id_array = $list_of_users->fetch_assoc();
 
             $user_id = $user_id_array['id'] + 1;
 
-            $result_email = $connect->query("SELECT id FROM finance_manager.users WHERE username='$login'");
-            $category_result = $connect->query("SELECT incomes_category_default.name FROM finance_manager.incomes_category_default");
-            $payment_method_result = $connect->query("SELECT payment_methods_default.name FROM finance_manager.payment_methods_default");
-            $expenses_list_result = $connect->query("SELECT expenses_category_default.name FROM finance_manager.expenses_category_default");
+            $result_email = $connect->query("SELECT id FROM mich1988_finm.users WHERE username='$login'");
+            $category_result = $connect->query("SELECT incomes_category_default.name FROM mich1988_finm.incomes_category_default");
+            $payment_method_result = $connect->query("SELECT payment_methods_default.name FROM mich1988_finm.payment_methods_default");
+            $expenses_list_result = $connect->query("SELECT expenses_category_default.name FROM mich1988_finm.expenses_category_default");
 
             if (!$result_email) throw new Exception($connect->error);
 
@@ -73,20 +73,20 @@ if (isset($_POST['email'])) {
             if ($validation_correct == true) {
 
 
-                if ($connect->query("INSERT INTO finance_manager.users VALUES (NULL, '$login', '$password_hash', '$email')")) {
+                if ($connect->query("INSERT INTO mich1988_finm.users VALUES (NULL, '$login', '$password_hash', '$email')")) {
 
                     while ($row1 = mysqli_fetch_array($category_result)) {
                         $category_to_insert = $row1['name'];
-                        @$connect->query("INSERT INTO finance_manager.incomes_category_assigned_to_users(incomes_category_assigned_to_users.id,incomes_category_assigned_to_users.user_id,incomes_category_assigned_to_users.name) values (null,'$user_id','$category_to_insert')");
+                        @$connect->query("INSERT INTO mich1988_finm.incomes_category_assigned_to_users(incomes_category_assigned_to_users.id,incomes_category_assigned_to_users.user_id,incomes_category_assigned_to_users.name) values (null,'$user_id','$category_to_insert')");
                     }
 
                     while ($row1 = mysqli_fetch_array($payment_method_result)) {
                         $payment_method = $row1['name'];
-                        @$connect->query("INSERT INTO finance_manager.payment_methods_assigned_to_users(payment_methods_assigned_to_users.id,payment_methods_assigned_to_users.user_id,payment_methods_assigned_to_users.name) values (null,'$user_id','$payment_method')");
+                        @$connect->query("INSERT INTO mich1988_finm.payment_methods_assigned_to_users(payment_methods_assigned_to_users.id,payment_methods_assigned_to_users.user_id,payment_methods_assigned_to_users.name) values (null,'$user_id','$payment_method')");
                     }
                     while ($row1 = mysqli_fetch_array($expenses_list_result)) {
                         $expenses_list = $row1['name'];
-                        @$connect->query("INSERT INTO finance_manager.expenses_category_assigned_to_users(expenses_category_assigned_to_users.id,expenses_category_assigned_to_users.user_id,expenses_category_assigned_to_users.name) values (null,'$user_id','$expenses_list')");
+                        @$connect->query("INSERT INTO mich1988_finm.expenses_category_assigned_to_users(expenses_category_assigned_to_users.id,expenses_category_assigned_to_users.user_id,expenses_category_assigned_to_users.name) values (null,'$user_id','$expenses_list')");
                     }
 
                     $_SESSION['registration_ok'] = true;
@@ -151,6 +151,7 @@ if (isset($_POST['email'])) {
                     }
                     ?>
                     <input type="submit" value="Sign me up">
+                    <input type="button" value="I have account" onclick="window.location.href='login_page.php'" />
                 </form>
             </div>
         </div>

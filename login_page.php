@@ -39,6 +39,7 @@ if ((isset($_SESSION['online'])) && ($_SESSION['online'] == true)) {
                            onblur="this.placeholder='password'">
 
                     <input type="submit" value="Log in">
+                    <input type="button" value="Back to registration" onclick="window.location.href='registration_page.php'" />
 
                 </form>
                 <?php
